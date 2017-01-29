@@ -364,7 +364,7 @@ func (pb *ProgressBar) write(current int64) {
 
 	// check len
 	out = pb.prefix + countersBox + barBox + percentBox + speedBox + timeLeftBox + pb.postfix
-	if escapeAwareRuneCountInString(out) < width {
+  if width-utf8.RuneCountInString(out) >= 0 {
 		end = strings.Repeat(" ", width-utf8.RuneCountInString(out))
 	}
 
